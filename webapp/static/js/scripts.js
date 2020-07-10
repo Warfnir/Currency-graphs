@@ -1,7 +1,6 @@
 var currencies_info = document.getElementById('currencies')
 
 window.onload = function () {
-    alert("HERE")
     createTableWithAllCurrencies()
     createCurrenciesGraphs()
 }
@@ -19,7 +18,7 @@ async function createCurrenciesGraphs() {
     for (let i = 0; i < currencies_codes.length; i++) {
         let data =  await getCurrencyForYear(currencies_codes[i], 2019)                             //Get data about specific currency
         charts_container.insertAdjacentHTML('beforeend', htmlCanvas(currencies_codes[i] + "_chart"))//Add canvas
-        drawGraph(currencies_codes[i] + "_chart", data.labels, data.data)                           //Draw chart in canvas
+        drawGraph(currencies_codes[i] + "_chart", data.labels, data.data, currencies_codes[i])      //Draw chart in canvas
     }
 }
 
@@ -33,7 +32,7 @@ function createTableWithAllCurrencies() {
 
 function htmlCanvas(chartId) {
     let html_text = ""
-    html_text += "<canvas id=\"" + chartId + "\" class=\"currency-chart\"></canvas>"
+    html_text += "<div class='currency-chart'><canvas id=\"" + chartId + "\"></canvas></div>"
     return html_text
 }
 
@@ -76,7 +75,7 @@ function currencyTableRows(data) {
     return html_text
 }
 
-function drawGraph(element_id, labels, data) {
+function drawGraph(element_id, labels, data, code) {
     let ctx = document.getElementById(element_id).getContext('2d');
     let chart = new Chart(ctx,
         {
@@ -84,13 +83,21 @@ function drawGraph(element_id, labels, data) {
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'USD',
-                    // backgroundColor: '#0F0FA0',
+                    label: code,
+                    backgroundColor: 'green',
+                    // backgroundColor: ['green', 'blue', 'red'],
                     borderColor: '#000000',
+                    borderWidth: 1,
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'white',
                     data: data
                 }]
             },
             options: {
+                title: {
+                    display: true,
+                    text: code
+                },
                 legend: {
                     display: false
                 },
@@ -98,6 +105,9 @@ function drawGraph(element_id, labels, data) {
                     point: {
                         radius: 0
                     }
+                },
+                tooltips: {
+                    mode: 'nearest',
                 }
 
             }

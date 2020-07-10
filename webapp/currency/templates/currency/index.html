@@ -14,23 +14,14 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- Font Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <table id="currencies" class="table table-dark">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Bin</th>
-            <th>Ask</th>
-        </tr>
-    </table>
-    <button onclick="getAllCurrenciesBuySell()">CLICK</button>
+    {% include 'currency/content.html'%}
 
-    <canvas id="myChart" style="max-width: 400px; max-height: 400px;"></canvas>
-    <div id="charts_container"></div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
