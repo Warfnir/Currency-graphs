@@ -1,8 +1,11 @@
 var currencies_info = document.getElementById('currencies')
 
 window.onload = function () {
-    createTableWithAllCurrencies()
-    createCurrenciesGraphs()
+    if (document.getElementById('charts_container')) {
+        createTableWithAllCurrencies()
+        createCurrenciesGraphs()
+    }
+
 }
 
 async function createCurrenciesGraphs() {
@@ -16,7 +19,7 @@ async function createCurrenciesGraphs() {
 
     let charts_container = document.getElementById('charts_container')                              //Get graphs container
     for (let i = 0; i < currencies_codes.length; i++) {
-        let data =  await getCurrencyForYear(currencies_codes[i], 2019)                             //Get data about specific currency
+        let data = await getCurrencyForYear(currencies_codes[i], 2019)                             //Get data about specific currency
         charts_container.insertAdjacentHTML('beforeend', htmlCanvas(currencies_codes[i] + "_chart"))//Add canvas
         drawGraph(currencies_codes[i] + "_chart", data.labels, data.data, currencies_codes[i])      //Draw chart in canvas
     }

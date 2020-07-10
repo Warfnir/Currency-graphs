@@ -4,7 +4,7 @@ from django.views.generic import View
 
 
 class IndexView(View):
-    template_name = 'currency/index.html'
+    template_name = 'currency/charts.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -12,3 +12,12 @@ class IndexView(View):
     def post(self, request, *args, **kwargs):
         pass
 
+
+class CalculatorView(View):
+    template_name = 'currency/calculator.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        pass
