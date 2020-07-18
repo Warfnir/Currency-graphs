@@ -13,3 +13,28 @@ body {
     grid: auto / 1fr 1fr;
     grid-column-gap: 30px
 }
+
+.chart_calc{
+    display: grid;
+    grid: auto / auto 420px;
+    grid-column-gap: 50px;
+}
+
+.currency-row:hover{
+    background-color: #808080;
+}
+
+.calc-table{
+    align-self: center;
+    text-align: center;
+}
+
+.calc-table label {
+    
+}
+
+.calc-table input {
+    border: black solid 1px;
+    border-radius: 15px;
+    padding: 5px 15px;
+}
